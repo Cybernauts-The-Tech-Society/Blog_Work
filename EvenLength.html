@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<style media="screen">
+  body{
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    width: 100%;
+    background: #FFD598;
+  }
+  h1{
+    position: absolute;
+    width: 100%;
+    font-family: Roboto;
+    font-size: 40px;
+    text-align: center;
+  }
+  label{
+    position: absolute;
+    font-size: 20px;
+    margin: 160px 0 0 380px;
+    font-family: Open Sans;
+  }
+  #size{
+    position: absolute;
+    font-size: 20px;
+    border-radius: 5px;
+    font-family: Open Sans;
+    padding-left: 10px;
+    margin: 160px 0 0 800px;
+  }
+  .cont{
+    position: absolute;
+    height: 200px;
+    width: 750px;
+    float:left;
+    margin: 250px 0 0 330px;
+  }
+  #inpF{
+    position: absolute;
+    font-size: 20px;
+    border-radius: 5px;
+    font-family: Open Sans;
+    margin: 10px 0 0 100px;
+  }
+  #inpF input{
+    border-radius: 10px;
+    font-size: 20px;
+    font-family: Open Sans;
+    height: 40px;
+    text-align: center;
+    width: 200px;
+    margin-right: 30px;
+    margin-bottom: 30px;
+  }
+  input:focus{
+    outline: none;
+  }
+  button{
+    position: absolute;
+    font-size: 20px;
+    border-radius: 5px;
+    font-family: Roboto;
+    height: 40px;
+    text-align: center;
+    width: 200px;
+    margin: 500px 0 0 540px;
+    background: #33FF25;
+  }
+  .out{
+    margin: 500px 0 0 540px;
+  }
+  #output{
+    position: absolute;
+    font-family: Open Sans;
+    font-size: 20px;
+    height: 40px;
+    width: 700px;
+    border: 1px solid black;
+    padding: 10px;
+    text-align: center;
+    margin: 600px 0 0 300px;
+  }
+</style>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>EvenLength</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@700&display=swap" rel="stylesheet">
+  </head>
+  <body>
+    <h1>Check Even Length String</h1>
+    <label for="size">Enter how many strings you want to enter : </label>
+    <input type="number" id="size" onchange="enter(this)"/>
+
+    <div class="cont">
+      <div id="inpF">
+
+      </div>
+    </div>
+
+    <button type="button" id="check" name="button" onclick="input_check()">Check</button>
+    <div class="out" id="output">
+
+    </div>
+    <script type="text/javascript">
+      var no;
+      var inpId=['f','s','t','fo','fi','s'];
+      var arrInp=[];
+      var input;
+      var inpValue=[];
+      var parent = document.getElementById("inpF");
+      var b=document.getElementById('check');
+      var disp=document.getElementById('output');
+
+      function enter(el)
+      {
+        var n = el.value;
+        no=n;
+        cleanDiv(parent);
+        for(var i=0;i<n;i++)
+        {
+          input = document.createElement('input');
+          input.setAttribute('type', 'text');
+          input.setAttribute('id', inpId[i]);
+          parent.appendChild(input);
+        }
+      }
+
+      function cleanDiv(div)
+      {
+        div.innerHTML ='';
+      }
+      var l;
+      var arr=[];
+      function input_check()
+      {
+        for(var i=0;i<no;i++)
+        {
+          inpValue[i]=document.getElementById(inpId[i]).value;
+          console.log(inpValue[i]);
+          l=inpValue[i].length;
+          if(l%2==0)
+          {
+            arr[i]=inpValue[i];
+            disp.innerHTML+=arr[i]+"  ";
+          }
+        }
+      }
+
+      /*var str=["Hello","World","Welcome","Come","Write","an"];
+      var arr=[];
+      var l;
+      evenLengthWords(str);
+      function evenLengthWords()
+      {
+        for(var i=0;i<str.length;i++)
+        {
+          l=str[i].length;
+          if(l%2==0)
+          {
+            arr[i]=str[i];
+            document.write(arr[i]+" ");
+          }
+        }
+      }*/
+    </script>
+  </body>
+</html>
